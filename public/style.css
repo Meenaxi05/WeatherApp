@@ -118,7 +118,7 @@ form i {
     height: 200px;
     overflow: scroll;
     cursor: pointer;
-    background-color: #1e1e1e;
+    background-color: rgb(173, 216, 230, 0.5);
     color: white;
     margin: auto;  
     width: 85%;
@@ -191,7 +191,7 @@ hr {
 
 .card:hover {
     transform: scale(1.1);
-    background-color: black;
+    background-color:rgb(173, 216, 230, 0.9);
 }
 
 .card img {

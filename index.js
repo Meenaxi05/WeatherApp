@@ -1,14 +1,14 @@
 // const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=Bangalore&days=7&aqi=yes&alerts=no`
 // const key = `1d35dcc8063b4122ad764306233001`
 
-// 1 fetching the api for weather details
+// 1 fetching the api for all weather details
 let target = "Belgaum";
 const fetchWeatherDataByCountry = async (city) => {
   const key = `1d35dcc8063b4122ad764306233001`;
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -31,6 +31,7 @@ function getWeatherForecastUi(data) {
     hour12: false,
     minute: "numeric",
   });
+
   document.querySelector(".weather-datetime").innerHTML = fulldate;
 
   document.querySelector(
@@ -175,11 +176,6 @@ function success(latlong) {
   const lat = latlong.coords.latitude;
   const long = latlong.coords.longitude;
   console.log(latlong);
-  // fetchWeatherDataByCountry(`${lat}, ${long}`).then((weatherdata) => {
-  //   getWeatherForecastUi(weatherdata);
-  //   getWeatherDetails(weatherdata);
-  //   renderWeekday(weatherdata.forecast.forecastday);
-  // });
   fetchAllFunction(`${lat}, ${long}`);
 }
 
