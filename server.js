@@ -1,15 +1,9 @@
 // Express
 const express = require("express");
 const path = require("path");
-const {
-  getLocationFromIp,
-  fetchWeatherDataByCountry,
-  fetchWeatherDataByCities,
-} = require("./utils");
-const { log } = require("console");
+const { getLocationFromIp, fetchWeatherDataByCountry } = require("./shared");
 
 const app = express();
-
 const port = 3000;
 
 app.set("view engine", "ejs");
@@ -56,12 +50,20 @@ app.get("/", async (req, res) => {
   res.render("index", { dynamicData });
 });
 
-//set the folder where your static files are loacted
+//Set the folder where your static files are loacted
 app.use(express.static(path.join(__dirname, "public")));
+
+app.get((res, req) => {
+  console.log(capitalize("hello"));
+});
 
 //Serve the javascript file index.js file
 app.get("/index.js", (req, res) => {
   res.sendFile(path.join(__dirname, "index.js"));
+});
+
+app.get("/shared.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "shared.js"));
 });
 
 app.use((req, res) => {
@@ -69,7 +71,6 @@ app.use((req, res) => {
 });
 
 //Start the server and listen on the specified  port
-//set the folder where your static files are loacted
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

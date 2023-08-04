@@ -1,16 +1,7 @@
-// const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=Bangalore&days=7&aqi=yes&alerts=no`
-// const key = `1d35dcc8063b4122ad764306233001`
-
 // 1 fetching the api for all weather details
 let target = "Belgaum";
-const fetchWeatherDataByCountry = async (city) => {
-  const key = `1d35dcc8063b4122ad764306233001`;
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`;
-  const res = await fetch(url);
-  const data = await res.json();
-  // console.log(data);
-  return data;
-};
+
+//fetchWeatherDataByCountry is written in shared.js which is common for client and server
 
 fetchWeatherDataByCountry(target).then((weatherdata) => {
   getWeatherForecastUi(weatherdata);
@@ -129,7 +120,7 @@ searchInput.addEventListener("focusin", () => {
   dropdown.style.display = "block";
 });
 
-// 11
+// 11 threeDaysForcast
 function getWeekDayHtml(day, imgsrc, temperature) {
   return `<div class="card">
                 <div class="Mon">${day}</div>
@@ -139,11 +130,11 @@ function getWeekDayHtml(day, imgsrc, temperature) {
             </div>`;
 }
 
-// 12
+// 12 render it into the html
 function renderWeekday(forecastValue) {
   const render = document.querySelector(".fulldetails");
   render.innerHTML = "";
-  console.log(forecastValue);
+  // console.log(forecastValue);
   forecastValue.forEach((forobject) => {
     const {
       date,
@@ -160,14 +151,14 @@ function renderWeekday(forecastValue) {
   });
 }
 
-// 13
+// 13 converting date to day
 function getWeekDayFromDate(date) {
   return new Date(date).toLocaleString("en-us", {
     weekday: "long",
   });
 }
 
-// 15 using geoloacion get weather details
+// 15 using geoloacion to get weather details using location alert
 function getGeoLocation() {
   navigator.geolocation.getCurrentPosition(success, error);
 }

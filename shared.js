@@ -11,8 +11,6 @@ const getLocationFromIp = async () => {
   return data;
 };
 
-exports.getLocationFromIp = getLocationFromIp;
-
 const fetchWeatherDataByCountry = async (city) => {
   const key = `1d35dcc8063b4122ad764306233001`;
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city}&days=7`;
@@ -21,4 +19,8 @@ const fetchWeatherDataByCountry = async (city) => {
   const data = await res.json();
   return data;
 };
-exports.fetchWeatherDataByCountry = fetchWeatherDataByCountry;
+
+if (typeof module !== "undefined" && module.exports) {
+  exports.getLocationFromIp = getLocationFromIp;
+  exports.fetchWeatherDataByCountry = fetchWeatherDataByCountry;
+}
