@@ -7,7 +7,7 @@ const getLocationFromIp = async () => {
   const res = await fetch(URL);
   //   console.log(res.text());
   const data = await res.json();
-  console.log({ data });
+  // console.log({ data });
   return data;
 };
 

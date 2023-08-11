@@ -12,7 +12,7 @@ app.set("async", true);
 app.get("/", async (req, res) => {
   const data = await getLocationFromIp();
   const values = await fetchWeatherDataByCountry(data.city);
-  console.log(values);
+  // console.log(values);
   // console.log(values.forecast.forecastday);
 
   let fulldate = new Date(values.location.localtime).toLocaleString("en-us", {
